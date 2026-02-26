@@ -7,22 +7,52 @@ window.addEventListener('scroll', function () {
     } else {
         header.classList.remove('scrolled');
     }
-});
+}, { passive: true });
 
 // ===== MOBILE MENU =====
 var mobileToggle = document.getElementById('mobile-toggle');
 var nav = document.getElementById('nav');
 
+function closeMenu() {
+    mobileToggle.classList.remove('active');
+    nav.classList.remove('open');
+    document.body.classList.remove('menu-open');
+}
+
+function openMenu() {
+    mobileToggle.classList.add('active');
+    nav.classList.add('open');
+    document.body.classList.add('menu-open');
+}
+
 mobileToggle.addEventListener('click', function () {
-    mobileToggle.classList.toggle('active');
-    nav.classList.toggle('open');
+    if (nav.classList.contains('open')) {
+        closeMenu();
+    } else {
+        openMenu();
+    }
 });
 
 nav.querySelectorAll('.nav-link').forEach(function (link) {
     link.addEventListener('click', function () {
-        mobileToggle.classList.remove('active');
-        nav.classList.remove('open');
+        closeMenu();
     });
+});
+
+// Close menu on outside tap
+document.addEventListener('click', function (e) {
+    if (nav.classList.contains('open') &&
+        !nav.contains(e.target) &&
+        !mobileToggle.contains(e.target)) {
+        closeMenu();
+    }
+});
+
+// Close menu on resize to desktop
+window.addEventListener('resize', function () {
+    if (window.innerWidth > 768 && nav.classList.contains('open')) {
+        closeMenu();
+    }
 });
 
 // ===== SCROLL REVEAL =====
@@ -40,7 +70,7 @@ function revealOnScroll() {
     });
 }
 
-window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('scroll', revealOnScroll, { passive: true });
 window.addEventListener('DOMContentLoaded', revealOnScroll);
 
 // ===== COUNTER ANIMATION =====
@@ -85,7 +115,7 @@ function animateCounters() {
     }
 }
 
-window.addEventListener('scroll', animateCounters);
+window.addEventListener('scroll', animateCounters, { passive: true });
 
 // ===== GROWTH CHART ANIMATION =====
 var chartAnimated = false;
@@ -105,7 +135,7 @@ function animateGrowthChart() {
     }
 }
 
-window.addEventListener('scroll', animateGrowthChart);
+window.addEventListener('scroll', animateGrowthChart, { passive: true });
 
 // ===== FAQ ACCORDION =====
 document.querySelectorAll('.faq-question').forEach(function (button) {
@@ -233,5 +263,5 @@ function toggleFloatingButtons() {
     }
 }
 
-window.addEventListener('scroll', toggleFloatingButtons);
+window.addEventListener('scroll', toggleFloatingButtons, { passive: true });
 window.addEventListener('DOMContentLoaded', toggleFloatingButtons);

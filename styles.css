@@ -49,6 +49,10 @@ body {
     overflow-x: hidden;
 }
 
+body.menu-open {
+    overflow: hidden;
+}
+
 img {
     max-width: 100%;
     display: block;
@@ -1537,6 +1541,8 @@ ul {
 }
 
 /* ===== RESPONSIVE ===== */
+
+/* --- Tablet landscape (1024px) --- */
 @media (max-width: 1024px) {
     .hero-container {
         grid-template-columns: 1fr;
@@ -1559,30 +1565,53 @@ ul {
     .timeline-line {
         width: 40px;
     }
+
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
 }
 
+/* --- Tablet portrait (768px) --- */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    /* Header & Mobile Nav */
+    .header-inner {
+        height: 64px;
+    }
+
     .mobile-toggle {
         display: flex;
+        min-width: 44px;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
     }
 
     .nav {
         position: fixed;
-        top: 72px;
+        top: 64px;
         left: 0;
         width: 100%;
-        background: rgba(255, 255, 255, 0.98);
+        height: calc(100vh - 64px);
+        height: calc(100dvh - 64px);
+        background: rgba(255, 255, 255, 0.99);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         flex-direction: column;
         gap: 0;
-        padding: 8px 0;
+        padding: 12px 0 32px;
         border-bottom: 1px solid var(--border);
         box-shadow: var(--shadow-lg);
         transform: translateY(-120%);
         opacity: 0;
         pointer-events: none;
         transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .nav.open {
@@ -1593,110 +1622,350 @@ ul {
 
     .nav-link {
         display: block;
-        padding: 14px 24px;
-        font-size: 0.95rem;
+        padding: 16px 24px;
+        font-size: 1rem;
         width: 100%;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
     }
 
-    .nav-link:hover {
+    .nav-link:active {
         background: var(--bg-alt);
     }
 
     .nav .btn-sm {
-        margin: 8px 24px 16px;
+        margin: 12px 24px 16px;
         width: calc(100% - 48px);
         text-align: center;
-        padding: 14px 20px;
+        padding: 16px 20px;
+        font-size: 0.95rem;
+        min-height: 52px;
     }
 
+    /* Sections reduced padding */
+    .problem,
+    .how-it-works,
+    .growth-stats,
+    .before-after,
+    .services,
+    .roi,
+    .credibility,
+    .process,
+    .testimonials,
+    .faq,
+    .cta-section,
+    .contact {
+        padding: 64px 0;
+    }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    /* Hero */
     .hero {
         min-height: auto;
     }
 
+    .hero-overlay {
+        background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.95) 60%, rgba(255,255,255,0.90) 100%);
+    }
+
     .hero-container {
-        padding-top: 110px;
-        padding-bottom: 60px;
+        padding-top: 100px;
+        padding-bottom: 56px;
     }
 
     .hero-visual {
         display: none;
     }
 
+    .hero-badge {
+        margin-bottom: 16px;
+    }
+
+    .hero h1 {
+        margin-bottom: 16px;
+    }
+
+    .hero-sub {
+        margin-bottom: 28px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        margin-bottom: 32px;
+    }
+
+    .hero-actions .btn-lg {
+        width: 100%;
+        justify-content: center;
+        padding: 18px 24px;
+        font-size: 1rem;
+    }
+
+    .hero-actions .link-arrow {
+        align-self: center;
+    }
+
+    .hero-trust {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    /* Problem */
     .problem-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
+    .problem-card {
+        padding: 24px;
+    }
+
+    /* Stats */
     .stats-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
+    .stat-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 20px;
+        padding: 24px;
+    }
+
+    .stat-card-icon {
+        margin: 0;
+        flex-shrink: 0;
+        width: 52px;
+        height: 52px;
+    }
+
+    .stat-card-value {
+        font-size: 1.8rem;
+    }
+
+    .stat-card-desc {
+        display: none;
+    }
+
+    /* Growth chart */
+    .growth-chart-top {
+        padding: 20px 20px 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .growth-chart-body {
+        padding: 0 20px 20px;
+    }
+
+    .growth-line-chart {
+        height: 140px;
+    }
+
+    /* Before/After */
     .ba-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
+    .ba-card {
+        padding: 24px 20px;
+    }
+
+    .ba-list li {
+        font-size: 0.88rem;
+    }
+
+    /* Services */
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
     }
 
+    .service-card {
+        padding: 24px 16px;
+    }
+
+    .service-icon {
+        width: 52px;
+        height: 52px;
+    }
+
+    .service-card h4 {
+        font-size: 0.9rem;
+    }
+
+    .service-card p {
+        font-size: 0.8rem;
+    }
+
+    /* ROI */
+    .roi-card-header {
+        padding: 16px 20px;
+    }
+
+    .roi-card-body {
+        padding: 20px;
+    }
+
+    /* Credibility */
     .cred-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
-    .testimonial-grid {
-        grid-template-columns: 1fr;
+    .cred-card {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 16px;
+        padding: 24px;
     }
 
+    .cred-icon {
+        margin: 0;
+        flex-shrink: 0;
+        width: 56px;
+        height: 56px;
+    }
+
+    .cred-note {
+        flex-direction: row;
+        font-size: 0.84rem;
+        padding: 14px 16px;
+    }
+
+    /* Process Timeline - vertical */
     .timeline {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        padding-left: 20px;
     }
 
     .timeline-line {
         width: 2px;
-        height: 32px;
-        margin: 0;
+        height: 28px;
+        margin: 0 0 0 23px;
     }
 
     .timeline-item {
         flex-direction: row;
-        gap: 14px;
+        gap: 16px;
+        width: 100%;
+    }
+
+    .timeline-dot {
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
     }
 
     .timeline-item span {
         max-width: none;
         text-align: left;
+        font-size: 0.9rem;
+        line-height: 48px;
     }
 
+    /* Testimonials */
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .testimonial-card {
+        padding: 24px;
+    }
+
+    /* FAQ */
+    .faq-question {
+        padding: 18px 0;
+        font-size: 0.95rem;
+        min-height: 56px;
+        gap: 12px;
+    }
+
+    .faq-answer p {
+        font-size: 0.88rem;
+    }
+
+    /* CTA */
+    .cta-box {
+        padding: 48px 24px;
+        border-radius: var(--radius-lg);
+    }
+
+    .cta-box .btn-lg {
+        width: 100%;
+        justify-content: center;
+        white-space: normal;
+        line-height: 1.4;
+    }
+
+    /* Form */
     .form-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .form-wrapper {
         padding: 28px 20px;
+        border-radius: var(--radius);
     }
 
-    .cta-box {
-        padding: 48px 24px;
+    /* iOS zoom prevention: inputs must be >= 16px */
+    .form-group input {
+        font-size: 16px;
+        padding: 14px 16px;
+        border-radius: 10px;
     }
 
-    .hero-actions {
-        flex-direction: column;
-        align-items: flex-start;
+    .form-group label {
+        font-size: 0.88rem;
     }
 
+    .contact-form .btn-lg {
+        padding: 18px 24px;
+        font-size: 1rem;
+        min-height: 56px;
+    }
+
+    .form-trust-note {
+        font-size: 0.8rem;
+    }
+
+    /* Footer */
     .footer-inner {
         flex-direction: column;
         gap: 12px;
         text-align: center;
     }
 
-    .hero-trust {
-        flex-direction: column;
-        gap: 10px;
+    .footer .logo {
+        font-size: 1rem;
     }
 
+    /* Floating buttons */
     .call-float {
         display: flex;
+        bottom: 24px;
+        left: 20px;
+        padding: 12px 16px;
+        min-height: 48px;
+        font-size: 0.84rem;
+        padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
     }
 
     .whatsapp-float-label {
@@ -1704,48 +1973,396 @@ ul {
     }
 
     .whatsapp-float {
-        padding: 14px;
+        padding: 15px;
         border-radius: 50%;
+        bottom: 24px;
+        right: 20px;
+        min-width: 56px;
+        min-height: 56px;
+        justify-content: center;
+        padding-bottom: calc(15px + env(safe-area-inset-bottom, 0px));
     }
 
+    /* Toast */
     .toast {
         font-size: 0.82rem;
         padding: 12px 16px;
         white-space: normal;
         max-width: 90vw;
         text-align: center;
+        top: 76px;
+    }
+
+    /* Reduce scroll padding for smaller header */
+    html {
+        scroll-padding-top: 72px;
     }
 }
 
+/* --- Small phones (480px) --- */
 @media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
     .hero h1 {
-        font-size: 1.75rem;
+        font-size: 1.6rem;
+        line-height: 1.18;
+    }
+
+    .hero-sub {
+        font-size: 0.92rem;
+    }
+
+    .hero-badge {
+        font-size: 0.68rem;
+        padding: 5px 12px;
     }
 
     .section-header h2 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
+    .section-desc {
+        font-size: 0.9rem;
+    }
+
+    .section-header {
+        margin-bottom: 32px;
+    }
+
+    /* Sections tighter padding */
+    .problem,
+    .how-it-works,
+    .growth-stats,
+    .before-after,
+    .services,
+    .roi,
+    .credibility,
+    .process,
+    .testimonials,
+    .faq,
+    .cta-section,
+    .contact {
+        padding: 48px 0;
+    }
+
+    /* Steps */
     .step {
         gap: 14px;
     }
 
     .step-number {
-        width: 42px;
-        height: 42px;
-        font-size: 1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 0.95rem;
     }
 
-    .btn-lg {
-        padding: 14px 24px;
-        font-size: 0.92rem;
+    .step-connector {
+        margin-left: 19px;
+        height: 28px;
     }
 
-    .services-grid {
-        grid-template-columns: 1fr;
+    .step-content h3 {
+        font-size: 1.05rem;
+    }
+
+    .step-content p {
+        font-size: 0.88rem;
+    }
+
+    .step-list li {
+        font-size: 0.82rem;
+    }
+
+    /* Stat cards stacked */
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .stat-card-icon {
+        margin: 0 auto;
+    }
+
+    .stat-card-desc {
+        display: block;
+        font-size: 0.82rem;
     }
 
     .stat-card-value {
         font-size: 2rem;
+    }
+
+    /* Services - single column */
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .service-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 16px;
+        padding: 20px;
+    }
+
+    .service-icon {
+        margin: 0;
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+    }
+
+    .service-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .service-card p {
+        display: none;
+    }
+
+    /* Buttons */
+    .btn-lg {
+        padding: 16px 20px;
+        font-size: 0.95rem;
+    }
+
+    /* ROI */
+    .roi-lead {
+        font-size: 1.02rem;
+    }
+
+    .roi-row {
+        font-size: 0.88rem;
+    }
+
+    .roi-total strong {
+        font-size: 1rem;
+    }
+
+    /* CTA */
+    .cta-box {
+        padding: 40px 20px;
+    }
+
+    .cta-box h2 {
+        font-size: 1.3rem;
+    }
+
+    .cta-box p {
+        font-size: 0.9rem;
+    }
+
+    /* Form */
+    .form-wrapper {
+        padding: 24px 16px;
+    }
+
+    .form-success {
+        padding: 36px 16px;
+    }
+
+    .form-success h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Testimonials */
+    .testimonial-text {
+        font-size: 0.88rem;
+    }
+
+    /* Timeline */
+    .timeline {
+        padding-left: 0;
+    }
+
+    .timeline-dot {
+        width: 42px;
+        height: 42px;
+    }
+
+    .timeline-line {
+        margin-left: 20px;
+        height: 24px;
+    }
+
+    .timeline-item span {
+        font-size: 0.85rem;
+        line-height: 42px;
+    }
+
+    /* Floating buttons smaller safe area */
+    .whatsapp-float {
+        bottom: 20px;
+        right: 16px;
+        min-width: 52px;
+        min-height: 52px;
+        padding: 13px;
+    }
+
+    .call-float {
+        bottom: 20px;
+        left: 16px;
+        padding: 10px 14px;
+        font-size: 0.8rem;
+    }
+
+    /* Before/After */
+    .ba-card {
+        padding: 20px 16px;
+    }
+
+    .ba-list {
+        gap: 10px;
+    }
+
+    .ba-list li {
+        font-size: 0.85rem;
+        gap: 8px;
+    }
+
+    /* Credibility card stacked on very small */
+    .cred-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cred-icon {
+        margin: 0 auto;
+    }
+
+    /* Growth chart labels */
+    .growth-chart-labels {
+        font-size: 0.65rem;
+    }
+
+    .growth-line-chart {
+        height: 120px;
+    }
+}
+
+/* --- Very small phones (360px) --- */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 14px;
+    }
+
+    .hero h1 {
+        font-size: 1.4rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .hero-trust {
+        gap: 8px;
+    }
+
+    .trust-item {
+        font-size: 0.78rem;
+    }
+
+    .btn-lg {
+        padding: 14px 16px;
+        font-size: 0.88rem;
+    }
+
+    .problem-card {
+        padding: 20px;
+    }
+
+    .problem-card h3 {
+        font-size: 0.95rem;
+    }
+
+    .problem-card p {
+        font-size: 0.84rem;
+    }
+
+    .faq-question {
+        font-size: 0.88rem;
+    }
+
+    .form-group input {
+        padding: 12px 14px;
+    }
+}
+
+/* --- Landscape orientation on mobile --- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 0;
+    }
+
+    .hero-container {
+        padding-top: 80px;
+        padding-bottom: 40px;
+    }
+
+    .nav {
+        height: calc(100vh - 64px);
+        height: calc(100dvh - 64px);
+        overflow-y: auto;
+    }
+}
+
+/* --- Safe area for notched devices --- */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .whatsapp-float {
+        bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .call-float {
+        bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .footer {
+        padding-bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+    }
+}
+
+/* --- Touch device hover fix --- */
+@media (hover: none) {
+    .problem-card:hover,
+    .stat-card:hover,
+    .service-card:hover,
+    .cred-card:hover,
+    .testimonial-card:hover {
+        transform: none;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:hover {
+        transform: none;
+    }
+
+    .timeline-dot:hover {
+        transform: none;
+    }
+}
+
+/* --- Prefers reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
     }
 }
