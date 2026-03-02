@@ -263,7 +263,7 @@ ul {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.92) 50%, rgba(255,255,255,0.8) 100%);
+    background: linear-gradient(135deg, rgba(255,255,255,0.96) 0%, rgba(248,250,252,0.94) 50%, rgba(240,253,250,0.88) 100%);
 }
 
 .hero-container {
@@ -295,9 +295,9 @@ ul {
 }
 
 .hero h1 {
-    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-size: clamp(2.1rem, 4.8vw, 3.4rem);
     font-weight: 800;
-    line-height: 1.12;
+    line-height: 1.1;
     letter-spacing: -0.035em;
     color: var(--text);
     margin-bottom: 20px;
@@ -1241,6 +1241,34 @@ ul {
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
 }
 
+.cta-microcopy {
+    display: block;
+    margin-top: 16px;
+    font-size: 0.82rem;
+    opacity: 0.75;
+    font-weight: 400;
+    position: relative;
+}
+
+/* Higher contrast CTA button */
+.cta-btn-highlight {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+/* ROI highlight row */
+.roi-highlight {
+    margin-top: 4px;
+    padding: 10px 0 4px;
+}
+
+.roi-highlight strong {
+    color: var(--primary);
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
 /* ===== CONTACT FORM ===== */
 .contact {
     padding: 100px 0;
@@ -1914,6 +1942,10 @@ ul {
         line-height: 1.4;
     }
 
+    .cta-microcopy {
+        font-size: 0.78rem;
+    }
+
     /* Form */
     .form-grid {
         grid-template-columns: 1fr;
@@ -2006,8 +2038,8 @@ ul {
     }
 
     .hero h1 {
-        font-size: 1.6rem;
-        line-height: 1.18;
+        font-size: 1.65rem;
+        line-height: 1.15;
     }
 
     .hero-sub {
